@@ -1,2 +1,20 @@
-%h1 AudioEntries#index
-%p Find me in app/views/audio_entries/index.html.erb
+%h1 Audio Entries
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Actions
+
+  %tbody
+    - @audio_entries.each do |audio_entry|
+      %tr
+        %td= audio_entry.title
+        %td= truncate(audio_entry.description, length: 100)
+        %td
+          = link_to 'Play', audio_entry_path(audio_entry)
+          = link_to 'Edit', edit_audio_entry_path(audio_entry)
+          = link_to 'Delete', audio_entry_path(audio_entry), method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Audio Entry', new_audio_entry_path

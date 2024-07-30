@@ -1,0 +1,2 @@
+class AudioEntry < ApplicationRecord
+end
